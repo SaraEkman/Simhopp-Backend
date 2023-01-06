@@ -51,18 +51,26 @@ router.put('/:id', (req, res, next) => {
             return res.json({ message: 'Content is required!' });
         } else if (req.body.userId == null || req.body.userId == undefined || req.body.userId == '') {
             return res.json({ message: 'UserId is required!' });
-        } else {
-            let sql = `UPDATE news SET content = '${req.body.content}', userId = '${req.body.userId}' WHERE id = '${req.params.id}'`;
+        } else if (req.body.softDelete == null || req.body.softDelete == undefined || req.body.softDelete == '') {
+            req.body.softDelete = 0;
+            if (req.body.softDelete == 'true') {
+                req.body.softDelete = 1;
+            }
+        }
+        else {
+            let sql = `UPDATE news SET content = '${req.body.content}', userId = '${req.body.userId}', softDelete = '${req.body.softDelete}' WHERE id = '${req.params.id}'`;
             req.app.locals.con.query(sql,
                 (err, result) => {
                     if (err) throw err;
                     console.log("1 record inserted", result);
                 });
-            
+
             res.json({ message: 'News updated!' });
         }
     });
 });
+
+
 
 
 
