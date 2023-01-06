@@ -15,13 +15,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+require('dotenv').config();
 
 app.locals.con = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'simhopp',
-    password: 'simhopp95S',
-    database: 'simhopp'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 },
     console.log('Connected to database')
 );
