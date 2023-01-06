@@ -39,17 +39,17 @@ Content-Type: application/json
 
 {
   "content": "This is a news",
-  "userId": 9
+  "userId": 18
 }
 
 ###
 # update a news
 ###
-PUT http://localhost:3000/news/1
+PUT http://localhost:3000/news/5
 Content-Type: application/json
 
 {
   "content": "hallo",
-  "userId": 9,
-  "softDelete": 1
+  "userId": 18,
+  "softDelete": 0
 }
