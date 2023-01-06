@@ -38,6 +38,17 @@ POST http://localhost:3000/news
 Content-Type: application/json
 
 {
-  "content": "Content 1",
-  "userId": 5
+  "content": "This is a news",
+  "userId": 9
+}
+
+###
+# update a news
+###
+PUT http://localhost:3000/news/1
+Content-Type: application/json
+
+{
+  "content": "This is a new news",
+  "userId": 9
 }
