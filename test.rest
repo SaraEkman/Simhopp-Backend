@@ -1,0 +1,43 @@
+###
+GET http://localhost:3000/users
+
+###
+# Create a new user
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "userName": "John Doe",
+  "userEmail": "ffff",
+  "password": "null",
+  "admin": ""
+}
+
+###
+# update a user
+###
+PUT http://localhost:3000/users/5
+Content-Type: application/json
+
+{
+  "userName": "sa",
+  "userEmail": "sari@gmail.com",
+  "admin": 0,
+  "password": "haha"
+}
+
+###
+GET http://localhost:3000/news
+
+
+###
+# Create a new news
+###
+POST http://localhost:3000/news
+Content-Type: application/json
+
+{
+  "content": "Content 1",
+  "userId": 5
+}
