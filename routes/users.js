@@ -87,6 +87,7 @@ router.put('/:id', (req, res, next) => {
   });
 });
 
+
 router.post('/signup', (req, res) => {
   let sql = "select userName, userEmail, password from users where userEmail=?";
 
@@ -101,7 +102,7 @@ router.post('/signup', (req, res) => {
             });
           } else {
             res.status(500).json({
-              message: 'Error creating user!'
+              message: err
             });
           }
         }
