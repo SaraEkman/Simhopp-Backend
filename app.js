@@ -25,9 +25,14 @@ app.locals.con = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
-},
-    console.log('Connected to database')
-);
+});
+app.locals.con.connect((err) => {
+    if (!err) {
+        console.log('Connected to database');
+    } else {
+        console.log('Connection failed', err);
+    }
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

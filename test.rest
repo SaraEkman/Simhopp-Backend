@@ -2,6 +2,9 @@
 GET http://localhost:3000/users
 
 ###
+GET http://localhost:3000/users/get
+
+###
 # Create a new user
 ###
 POST http://localhost:3000/users
@@ -18,19 +21,76 @@ POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-  "userName": "",
-  "userEmail": "",
-  "password": ""
+  "userName": "hhh",
+  "userEmail": "he077@gmail.com",
+  "password": "jj"
 }
 
 ###
 POST http://localhost:3000/users/login
 Content-Type: application/json
+# Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMwNDE2NDIsImV4cCI6MTY3MzA3MDQ0Mn0.ZWtv_fTaPmTaWVarsMoob_5BNKIfnlygjCWaKgtMuyk 
 
 {
-  "userEmail": "sara@gmail.com",
-  "password": "påpo"
+  "userEmail": "test1@gmail.com",
+  "password": "test1"
 }
+
+###
+POST http://localhost:3000/users/forgotPassword
+Content-Type: application/json
+
+{
+  "userEmail": "hellensa077@gmail.com"
+}
+
+###
+PATCH http://localhost:3000/users/update
+Content-Type: application/json
+
+{
+  "id": 20,
+  "admin": 1
+}
+
+###
+POST http://localhost:3000/users/changePasswordUser
+Content-Type: application/json
+
+{
+  "userEmail": "ddddd@gmail.com",
+  "newPassword": "1234568884"
+}
+
+###
+POST http://localhost:3000/users/changePasswordAdmin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InRlc3QxIiwiaWF0IjoxNjczMDUxMjA3LCJleHAiOjE2NzMwODAwMDd9.QaEimAzjoPU_V7U3q9-kdGzD6nHCjsosp0dGB_G4IL0
+
+{
+  "userEmail": "test1@gmail.com",
+  "newPassword": "12384"
+}
+
+###
+POST http://localhost:3000/users/changeUserEmail
+Content-Type: application/json
+
+{
+  "password": "1234568884",
+  "newUserEmail": "d@gmail.com"
+}
+
+###
+GET http://localhost:3000/users/checkToken
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InRlc3QxIiwiaWF0IjoxNjczMDQ4MjA3LCJleHAiOjE2NzMwNzcwMDd9.fvqdmY1Y3isw-v0a_9nCijwxN_pkFy2lJn3Q9SohmCU
+
+{
+  "userEmail": "test1@gmail.com",
+  "password": "test1"
+}
+
+
 
 ###
 # update a user
