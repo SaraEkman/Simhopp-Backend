@@ -33,7 +33,7 @@ Content-Type: application/json
 
 {
   "userEmail": "test1@gmail.com",
-  "password": "test1"
+  "password": "12384"
 }
 
 ###
@@ -51,6 +51,15 @@ Content-Type: application/json
 {
   "id": 20,
   "admin": 1
+}
+
+###
+DELETE http://localhost:3000/users/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAxNDA3LCJleHAiOjE2NzMxMzAyMDd9.-XTH3lsH5XD8UKBGgyfy1WkzckhkzsiswpvNE6i7DQA
+
+{
+  "id": 19
 }
 
 ###

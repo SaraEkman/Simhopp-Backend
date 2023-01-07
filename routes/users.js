@@ -154,8 +154,6 @@ router.post('/login', (req, res) => {
         message: err
       });
     }
-
-
   });
 });
 
@@ -228,6 +226,27 @@ router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
       }
       return res.status(200).json({
         message: 'User updated successfully!'
+      });
+    } else {
+      res.status(500).json({
+        message: err
+      });
+    }
+  });
+});
+
+router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
+  let sql = "update users set softDelete=? where id=?";
+  req.app.locals.con.query(sql, [1, req.body.id], (err, result) => {
+    console.log(result);
+    if (!err) {
+      if (result.affectedRows == 0) { 
+        return res.status(404).json({
+          message: 'User id dose not exist!'
+        });
+      }
+      return res.status(200).json({
+        message: 'User deleted successfully!'
       });
     } else {
       res.status(500).json({
