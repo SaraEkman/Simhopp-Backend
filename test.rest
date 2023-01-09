@@ -1,21 +1,8 @@
 ###
-GET http://localhost:3000/users
-
-###
 GET http://localhost:3000/users/get
 
 ###
 # Create a new user
-###
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-  "userName": "test1",
-  "userEmail": "test1@gmail.com",
-  "password": "test1"
-}
-
 ###
 POST http://localhost:3000/users/signup
 Content-Type: application/json
@@ -29,11 +16,11 @@ Content-Type: application/json
 ###
 POST http://localhost:3000/users/login
 Content-Type: application/json
-# Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMwNDE2NDIsImV4cCI6MTY3MzA3MDQ0Mn0.ZWtv_fTaPmTaWVarsMoob_5BNKIfnlygjCWaKgtMuyk 
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzgyNTIsImV4cCI6MTY3MzMwNzA1Mn0.dk6-T6q9m7QNYqvedQD9Muolso2pEbPnpljzwsjKKg8
 
 {
-  "userEmail": "test1@gmail.com",
-  "password": "12384"
+  "userEmail": "sara@gmail.com",
+  "password": "påpo"
 }
 
 ###
@@ -47,19 +34,21 @@ Content-Type: application/json
 ###
 PATCH http://localhost:3000/users/update
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAzMjMwLCJleHAiOjE2NzMxMzIwMzB9.SXUVXP-svFnJ5PbFOJpJuX2HXdR8WgLYX7_zFkBVwTk
 
 {
   "id": 20,
-  "admin": 1
+  "admin": 0
 }
 
 ###
 DELETE http://localhost:3000/users/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAxNDA3LCJleHAiOjE2NzMxMzAyMDd9.-XTH3lsH5XD8UKBGgyfy1WkzckhkzsiswpvNE6i7DQA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAzMjMwLCJleHAiOjE2NzMxMzIwMzB9.SXUVXP-svFnJ5PbFOJpJuX2HXdR8WgLYX7_zFkBVwTk
 
 {
-  "id": 19
+  "id": 19,
+  "softDelete": 0
 }
 
 ###
@@ -100,44 +89,44 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 }
 
 
-
 ###
-# update a user
-###
-PUT http://localhost:3000/users/18
-Content-Type: application/json
-
-{
-  "userName": "sara",
-  "userEmail": "sara@gmail.com",
-  "password": "påpo",
-  "admin": 1,
-  "softDelete": 0
-}
-
-###
-GET http://localhost:3000/news
+GET http://localhost:3000/news/get
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 
 ###
 # Create a new news
 ###
-POST http://localhost:3000/news
+POST http://localhost:3000/news/add
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 {
-  "content": "This is a news",
+  "content": "<p>hej</p><h1>Vad gör du idag?</h1>",
   "userId": 18
 }
 
 ###
 # update a news
 ###
-PUT http://localhost:3000/news/5
+PATCH http://localhost:3000/news/update
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 {
-  "content": "hallo",
+  "content": "<p>Via: </p><h1>HEAD </h1>",
   "userId": 18,
-  "softDelete": 0
+  "id": 5
+}
+
+###
+# delete a news
+###
+DELETE http://localhost:3000/news/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+
+{
+  "id": 5,
+  "softDelete": 1
 }

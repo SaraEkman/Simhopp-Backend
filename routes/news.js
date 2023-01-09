@@ -1,80 +1,57 @@
 var express = require('express');
+var auth = require('../services/authentication');
+var checkAdmin = require('../services/checkAdmin');
 var router = express.Router();
 
-
-router.get('/', (req, res, next) => {
-    req.app.locals.con.connect((err) => {
-        if (err) {
-            console.log('Error connecting to Db');
-        }
-        let sql = `SELECT * FROM news`;
-        req.app.locals.con.query(sql,
-            (err, result) => {
-                if (err) throw err;
-                console.log("1 record inserted", result);
-                res.json(result);
-            });
-    });
-});
-
-router.post('/', (req, res, next) => {
-    req.app.locals.con.connect((err) => {
-        if (err) {
-            console.log('Error connecting to Db');
-        }
-        if (req.body.content == null || req.body.content == undefined || req.body.content == '') {
-            return res.json({ message: 'Content is required!' });
-        } else if (req.body.userId == null || req.body.userId == undefined || req.body.userId == '') {
-            return res.json({ message: 'User is required!' });
-        } else if (req.body.userId == null || req.body.userId == undefined || req.body.userId == ''
-            || req.body.userId == 'undefined' || req.body.userId == 'null') {
-            res.json({ message: 'User is required!' });
+router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
+    sql = "insert into news (content, userId) values(?,?)";
+    req.app.locals.con.query(sql, [req.body.content, req.body.userId], (err, result) => {
+        if (!err) {
+            return res.status(200).json({ message: 'News added successfully' });
         } else {
-            let sql = `INSERT INTO news (content, userId) VALUES ('${req.body.content}', '${req.body.userId}')`;
-            req.app.locals.con.query(sql,
-                (err, result) => {
-                    if (err) throw err;
-                    console.log("1 record inserted", result);
-                });
-
-            res.json({ message: 'News created!' });
+            return res.status(500).json({ message: err });
         }
     });
 });
 
-router.put('/:id', (req, res, next) => {
-    req.app.locals.con.connect((err) => {
-        if (err) {
-            console.log('Error connecting to Db');
+router.get('/get', auth.authenticateToken, (req, res, next) => {
+    sql = "select * from news where softDelete = 0";
+    req.app.locals.con.query(sql, (err
+        , result) => {
+        if (!err) {
+            return res.status(200).json(result);
+        } else {
+            return res.status(500).json({ message: err });
         }
-        if (req.body.content == null || req.body.content == undefined || req.body.content == '') {
-            return res.json({ message: 'Content is required!' });
-        } else if (req.body.userId == null || req.body.userId == undefined || req.body.userId == '') {
-            return res.json({ message: 'UserId is required!' });
-        }  
-    
-        else {
-            let sql;
-            if (req.body.softDelete == 1 || req.body.softDelete == 0) {
-                sql = `UPDATE news SET content = '${req.body.content}', userId = '${req.body.userId}', softDelete = '${req.body.softDelete}' WHERE id = '${req.params.id}'`;
-                
-            } else {
-                sql = `UPDATE news SET content = '${req.body.content}', userId = '${req.body.userId}' WHERE id = '${req.params.id}'`;
+    });
+});
+
+router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
+    sql = "update news set content = ?, userId = ? where id = ?";
+    req.app.locals.con.query(sql, [req.body.content, req.body.userId, req.body.id], (err, result) => {
+        if (!err) {
+            if (result.affectedRows == 0) {
+                return res.status(404).json({ message: 'News id not found' });
             }
-            req.app.locals.con.query(sql,
-                (err, result) => {
-                    if (err) throw err;
-                    console.log("1 record inserted", result);
-                });
-
-            res.json({ message: 'News updated!' });
+            return res.status(200).json({ message: 'News updated successfully' });
+        } else {
+            return res.status(500).json({ message: err });
         }
     });
 });
 
-
-
-
-
+router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
+    sql = "update news set softDelete = ? where id = ?";
+    req.app.locals.con.query(sql, [req.body.softDelete, req.body.id], (err, result) => {
+        if (!err) {
+            if (result.affectedRows == 0) {
+                return res.status(404).json({ message: 'News id not found' });
+            }
+            return res.status(200).json({ message: 'News deleted successfully' });
+        } else {
+            return res.status(500).json({ message: err });
+        }
+    });
+});
 
 module.exports = router;
