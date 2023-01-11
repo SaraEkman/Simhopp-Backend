@@ -9,7 +9,7 @@ router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, ne
         if (!err) {
             return res.status(200).json({ message: 'News added successfully' });
         } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
         }
     });
 });
@@ -22,7 +22,7 @@ router.get('/get', auth.authenticateToken, (req, res, next) => {
         if (!err) {
             return res.status(200).json(result);
         } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
         }
     });
 });
@@ -36,7 +36,7 @@ router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
             }
             return res.status(200).json({ message: 'News updated successfully' });
         } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
         }
     });
 });
@@ -50,7 +50,7 @@ router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, re
             }
             return res.status(200).json({ message: 'News deleted successfully' });
         } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
         }
     });
 });

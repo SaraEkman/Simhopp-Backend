@@ -17,27 +17,18 @@ router.post('/signup', (req, res) => {
         sql = "insert into users (userName, userEmail, password) values (?, ?, ?)";
         req.app.locals.con.query(sql, [req.body.userName, req.body.userEmail, req.body.password], (err, result) => {
           if (!err) {
-            res.status(200).json({
-              message: 'Successfully registered!'
-            });
+            res.status(200).json({ message: 'Successfully registered!' });
           } else {
-            res.status(500).json({
-              message: err
-            });
+            res.status(500).json(err);
           }
         }
         );
       } else {
-        return res.status(400).json({
-          message: 'User already exists!'
-        });
+        return res.status(400).json({ message: 'User already exists!' });
       }
     } else {
-      return res.status(500).json({
-        message: err
-      });
+      return res.status(500).json(err);
     }
-
   });
 });
 
@@ -47,22 +38,15 @@ router.post('/login', (req, res) => {
     console.log(result);
     if (!err) {
       if (result.length <= 0 || result[0].password != req.body.password) {
-        return res.status(401).json({
-          message: 'Incorrect email or password!'
-        });
+        return res.status(401).json({ message: 'Incorrect email or password!' });
       }
       else if (result[0].admin == 0) {
-        return res.status(401).json({
-          message: 'Wait for admin approval!'
-        });
+        return res.status(401).json({ message: 'Wait for admin approval!' });
       }
       else if (result[0].password == req.body.password && result[0].admin == 1) {
         const response = { userEmail: result[0].userEmail, password: result[0].password };
         const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, { expiresIn: '8h' });
-        res.status(200).json({
-          accessToken: accessToken,
-        });
-
+        res.status(200).json({ accessToken: accessToken });
       } else {
         return res.status(400).json({
           message: 'something went wrong! Please try again later!'
@@ -70,9 +54,7 @@ router.post('/login', (req, res) => {
       }
 
     } else {
-      return res.status(500).json({
-        message: err
-      });
+      return res.status(500).json(err);
     }
   });
 });
@@ -113,9 +95,7 @@ router.post('/forgotPassword', (req, res) => {
         });
       }
     } else {
-      return res.status(500).json({
-        message: err
-      });
+      return res.status(500).json(err);
     }
   });
 });
@@ -126,9 +106,7 @@ router.get('/get', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => 
     if (!err) {
       return res.json(result);
     } else {
-      return res.status(500).json({
-        message: err
-      });
+      return res.status(500).json(err);
     }
   }
   );
@@ -148,9 +126,7 @@ router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
         message: 'User updated successfully!'
       });
     } else {
-      res.status(500).json({
-        message: err
-      });
+      res.status(500).json(err);
     }
   });
 });
@@ -169,9 +145,7 @@ router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, re
         message: 'User deleted or undeleted successfully!'
       });
     } else {
-      res.status(500).json({
-        message: err
-      });
+      res.status(500).json(err);
     }
   });
 });
@@ -196,16 +170,15 @@ router.post('/changePasswordUser', (req, res) => {
           if (!err) {
             return res.status(200).json({ message: 'Password changed successfully!' });
           } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
           }
         });
       }
-
       else {
-        return res.status(400).json({ message: 'something went wrong! Please try again later!' + err });
+        return res.status(400).json({ message: 'something went wrong! Please try again later!' });
       }
     } else {
-      return res.status(500).json({ message: err });
+      return res.status(500).json(err);
     }
   });
 });
@@ -224,7 +197,7 @@ router.post('/changeUserEmail', (req, res) => {
           if (!err) {
             return res.status(200).json({ message: 'Email changed successfully!' });
           } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
           }
         });
       }
@@ -233,7 +206,7 @@ router.post('/changeUserEmail', (req, res) => {
         return res.status(400).json({ message: 'something went wrong! Please try again later!' + err });
       }
     } else {
-      return res.status(500).json({ message: err });
+      return res.status(500).json(err);
     }
   });
 });
@@ -252,7 +225,7 @@ router.post('/changePasswordAdmin', auth.authenticateToken, checkAdmin.checkAdmi
           if (!err) {
             return res.status(200).json({ message: 'Password changed successfully!' });
           } else {
-            return res.status(500).json({ message: err });
+            return res.status(500).json(err);
           }
         });
       }
@@ -260,7 +233,7 @@ router.post('/changePasswordAdmin', auth.authenticateToken, checkAdmin.checkAdmi
         return res.status(400).json({ message: 'something went wrong! Please try again later!' + err });
       }
     } else {
-      return res.status(500).json({ message: err });
+      return res.status(500).json(err);
     }
   });
 });
