@@ -1,5 +1,6 @@
 ###
 GET http://localhost:3000/users/get
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzM1OTkwMjgsImV4cCI6MTY3MzYyNzgyOH0.h_4oSerweYuyYwHkXyOEIcW7L7Q1AnY5ic_UxJEwPgc
 
 ###
 # Create a new user
@@ -8,8 +9,8 @@ POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-  "userName": "hhh",
-  "userEmail": "he077@gmail.com",
+  "userName": "Hellen",
+  "userEmail": "hellensa077@gmail.com",
   "password": "jj"
 }
 
@@ -20,7 +21,7 @@ Content-Type: application/json
 
 {
   "userEmail": "sara@gmail.com",
-  "password": "påpo"
+  "password": "påpo1234"
 }
 
 ###
