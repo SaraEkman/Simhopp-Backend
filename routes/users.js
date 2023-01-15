@@ -41,7 +41,10 @@ router.post('/login', (req, res) => {
         return res.status(401).json({ message: 'Incorrect email or password!' });
       }
       else if (result[0].admin == 0) {
-        return res.status(401).json({ message: 'Wait for admin approval!' });
+        return res.status(200).json({
+          message: 'Welcome to Simhopp, you are logged in as a user! So you can only see the events and if you want to change your mail do it in the profile page!',
+          userId: result[0].id, userEmail: result[0].userEmail
+        });
       }
       else if (result[0].password == req.body.password && result[0].admin == 1) {
         const response = { userEmail: result[0].userEmail, password: result[0].password };
@@ -58,6 +61,7 @@ router.post('/login', (req, res) => {
     }
   });
 });
+
 
 var transporter = nodeMalier.createTransport({
   service: 'gmail',
@@ -184,16 +188,17 @@ router.post('/changePasswordUser', (req, res) => {
 });
 
 router.post('/changeUserEmail', (req, res) => {
-  let sql = "select *from users where admin='0' and password=?";
-  req.app.locals.con.query(sql, [req.body.password], (err, result) => {
-    console.log(result);
+  let sql = "select *from users where admin='0' and id=? and userEmail=? and password=?";
+  req.app.locals.con.query(sql, [req.body.id, req.body.userEmail,req.body.password], (err, result) => {
+    console.log(result[0]);
     if (!err) {
       if (result.length <= 0) {
-        return res.status(401).json({ message: 'Incorrect password!' });
+        return res.status(401).json({ message: 'Incorrect uppgifter!' });
       }
-      else if (result[0].password == req.body.password && result[0].admin == 0) {
-        sql = "update users set userEmail=? where password=?";
-        req.app.locals.con.query(sql, [req.body.newUserEmail, req.body.password], (err, result) => {
+      else if (result[0].userEmail == req.body.userEmail && result[0].admin == 0 && result[0].password == req.body.password) {
+        console.log('dfhdshdj');
+        sql = "update users set userEmail=? where id=?";
+        req.app.locals.con.query(sql, [req.body.newUserEmail, req.body.id], (err, result) => {
           if (!err) {
             return res.status(200).json({ message: 'Email changed successfully!' });
           } else {

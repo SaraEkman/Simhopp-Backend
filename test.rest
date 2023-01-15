@@ -20,8 +20,8 @@ Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzgyNTIsImV4cCI6MTY3MzMwNzA1Mn0.dk6-T6q9m7QNYqvedQD9Muolso2pEbPnpljzwsjKKg8
 
 {
-  "userEmail": "sara@gmail.com",
-  "password": "påpo1234"
+  "userEmail": "hellensa077@gmail.com",
+  "password": "jj12345"
 }
 
 ###
@@ -76,8 +76,10 @@ POST http://localhost:3000/users/changeUserEmail
 Content-Type: application/json
 
 {
-  "password": "1234568884",
-  "newUserEmail": "d@gmail.com"
+  "id": 20,
+  "userEmail": "test2Change@gmail.com",
+  "password": "12384",
+  "newUserEmail": "test1@gmail.com"
 }
 
 ###
@@ -92,8 +94,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 
 ###
 GET http://localhost:3000/news/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
+###
+GET http://localhost:3000/news
 
 ###
 # Create a new news
