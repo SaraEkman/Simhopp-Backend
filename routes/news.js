@@ -14,6 +14,20 @@ router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, ne
     });
 });
 
+router.get('/', (req, res, next) => {
+    sql = "select id,content,createDate from news where softDelete = 0";
+    req.app.locals.con.query(sql, (err, result) => {
+        console.log(result);
+        if (!err) {
+            return res.status(200).json(result);
+        } else {
+            return res.status(500).json(err);
+        }
+    });
+});
+
+
+
 router.get('/get', auth.authenticateToken, (req, res, next) => {
     sql = "select news.id,news.content,news.createDate,news.userId,news.softDelete,users.userName from news INNER JOIN users on news.userId = users.id where news.softDelete = 0";
     req.app.locals.con.query(sql, (err
