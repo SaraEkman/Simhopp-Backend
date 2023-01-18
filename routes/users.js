@@ -49,7 +49,10 @@ router.post('/login', (req, res) => {
       else if (result[0].password == req.body.password && result[0].admin == 1) {
         const response = { userEmail: result[0].userEmail, password: result[0].password };
         const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, { expiresIn: '8h' });
-        res.status(200).json({ accessToken: accessToken, userId: result[0].id });
+        res.status(200).json({
+          message: 'Welcome to Simhopp, you are logged in as an admin! So you can see all the events and you can add, edit and delete events!',
+          accessToken: accessToken, userId: result[0].id
+        });
       } else {
         return res.status(400).json({
           message: 'something went wrong! Please try again later!'
@@ -84,8 +87,8 @@ router.post('/forgotPassword', (req, res) => {
         var mailOptions = {
           from: process.env.USEREMAIL,
           to: req.body.userEmail,
-          subject: 'Password by Simhopp Management System',
-          html: '<h1>Your login details for Simhopp Management System </h1><p>userEmail: ' + result[0].userEmail + '<br>Password: ' + result[0].password + '<br><a href="http://localhost:4200/">Click here to login</a></p>'
+          subject: 'Password by Simhopp System',
+          html: '<h1>Your login details for Simhopp System </h1><p>userEmail: ' + result[0].userEmail + '<br>Password: ' + result[0].password + '<br><a href="http://localhost:4200/">Click here to login</a></p>'
         };
         transporter.sendMail(mailOptions, function (error, info) {
           if (error) {
@@ -189,18 +192,17 @@ router.post('/changePasswordUser', (req, res) => {
 
 router.post('/changeUserEmail', (req, res) => {
   let sql = "select *from users where admin='0' and id=? and userEmail=? and password=?";
-  req.app.locals.con.query(sql, [req.body.id, req.body.userEmail,req.body.password], (err, result) => {
+  req.app.locals.con.query(sql, [req.body.id, req.body.userEmail, req.body.password], (err, result) => {
     console.log(result[0]);
     if (!err) {
       if (result.length <= 0) {
         return res.status(401).json({ message: 'Incorrect uppgifter!' });
       }
       else if (result[0].userEmail == req.body.userEmail && result[0].admin == 0 && result[0].password == req.body.password) {
-        console.log('dfhdshdj');
         sql = "update users set userEmail=? where id=?";
         req.app.locals.con.query(sql, [req.body.newUserEmail, req.body.id], (err, result) => {
           if (!err) {
-            return res.status(200).json({ message: 'Email changed successfully!' });
+            return res.status(200).json({ message: 'Email changed successfully! Try logging in again with the new email' });
           } else {
             return res.status(500).json(err);
           }

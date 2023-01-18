@@ -9,9 +9,9 @@ POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-  "userName": "Hellen",
-  "userEmail": "hellensa077@gmail.com",
-  "password": "jj"
+  "userName": "jonathanengman",
+  "userEmail": "jonathanengman@hotmail.com",
+  "password": "jonathanengman"
 }
 
 ###
@@ -20,8 +20,8 @@ Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzgyNTIsImV4cCI6MTY3MzMwNzA1Mn0.dk6-T6q9m7QNYqvedQD9Muolso2pEbPnpljzwsjKKg8
 
 {
-  "userEmail": "hellensa077@gmail.com",
-  "password": "jj12345"
+  "userEmail": "jonathanengman@hotmail.com",
+  "password": "jonathanengman"
 }
 
 ###
@@ -29,7 +29,7 @@ POST http://localhost:3000/users/forgotPassword
 Content-Type: application/json
 
 {
-  "userEmail": "hellensa077@gmail.com"
+  "userEmail": "jonathanengman@hotmail.com"
 }
 
 ###
@@ -94,7 +94,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 
 ###
 GET http://localhost:3000/news/get
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 ###
 GET http://localhost:3000/news
