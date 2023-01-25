@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/users/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzM1OTkwMjgsImV4cCI6MTY3MzYyNzgyOH0.h_4oSerweYuyYwHkXyOEIcW7L7Q1AnY5ic_UxJEwPgc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc0NjcyNTg2LCJleHAiOjE2NzQ3MDEzODZ9.Plr4BtFRRRPdUdxNjzyByfHMxUC6un0OWqHUgYVjlkU
 
 ###
 # Create a new user
@@ -9,9 +9,9 @@ POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-  "userName": "jonathanengman",
-  "userEmail": "jonathanengman@hotmail.com",
-  "password": "jonathanengman"
+  "userName": "Saroooo",
+  "userEmail": "Saroooo@hotmail.com",
+  "password": "Saroooossss"
 }
 
 ###
@@ -20,8 +20,8 @@ Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzgyNTIsImV4cCI6MTY3MzMwNzA1Mn0.dk6-T6q9m7QNYqvedQD9Muolso2pEbPnpljzwsjKKg8
 
 {
-  "userEmail": "jonathanengman@hotmail.com",
-  "password": "jonathanengman"
+  "userEmail": "sara@gmail.com",
+  "password": "påpo1234"
 }
 
 ###
@@ -43,12 +43,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 }
 
 ###
-DELETE http://localhost:3000/users/delete
+PATCH http://localhost:3000/users/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAzMjMwLCJleHAiOjE2NzMxMzIwMzB9.SXUVXP-svFnJ5PbFOJpJuX2HXdR8WgLYX7_zFkBVwTk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc0Njc3MTk4LCJleHAiOjE2NzQ3MDU5OTh9.6uF4MwiEDDj7yGmxGRbQyHRQgIPBjsKybx_EOUZDDag
 
 {
-  "id": 19,
+  "id": 20,
   "softDelete": 0
 }
 
@@ -94,17 +94,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 
 ###
 GET http://localhost:3000/news/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 ###
-GET http://localhost:3000/news
+GET http://localhost:3000/news?limit=4
 
 ###
 # Create a new news
 ###
 POST http://localhost:3000/news/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 {
   "content": "<p>hej</p><h1>Vad gör du idag?</h1>",
@@ -116,17 +116,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzY
 ###
 PATCH http://localhost:3000/news/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 {
   "content": "<p>Via: </p><h1>HEAD </h1>",
-  "userId": 20,
-  "id": 5
+  "userId": 18,
+  "id": 6
 }
 
 ###
 # delete a news
 ###
+PATCH http://localhost:3000/news/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc0NjQ3MzMwLCJleHAiOjE2NzQ2NzYxMzB9.wW8HtgSrKLCwBxB5Bhw5TpyFdFlAyb8wCGghBcSdYxE
+
+{
+  "id": 5,
+  "softDelete": 1
+}
+
+
+###
+
 DELETE http://localhost:3000/news/delete
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
