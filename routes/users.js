@@ -108,7 +108,7 @@ router.post('/forgotPassword', (req, res) => {
 });
 
 router.get('/get', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
-  const sql = "select id,userName, userEmail, admin, softDelete from users where admin='0'";
+  const sql = "select id,userName, userEmail, admin, softDelete from users";
   req.app.locals.con.query(sql, (err, result) => {
     if (!err) {
       return res.json(result);
@@ -138,7 +138,7 @@ router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
   });
 });
 
-router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
+router.patch('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
   let sql = "update users set softDelete=? where id=?";
   req.app.locals.con.query(sql, [req.body.softDelete, req.body.id], (err, result) => {
     console.log(result);
