@@ -15,7 +15,9 @@ router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, ne
 });
 
 router.get('/', (req, res, next) => {
-    sql = "select id,content,createDate from news where softDelete = 0";
+    console.log(req.query.limit);
+    sql = "select id,content,createDate from news where softDelete = 0 limit " + req.query.limit;
+    console.log(sql);
     req.app.locals.con.query(sql, (err, result) => {
         console.log(result);
         if (!err) {
@@ -29,7 +31,7 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/get', auth.authenticateToken, (req, res, next) => {
-    sql = "select news.id,news.content,news.createDate,news.userId,news.softDelete,users.userName from news INNER JOIN users on news.userId = users.id where news.softDelete = 0";
+    sql = "select news.id,news.content,news.createDate,news.userId,news.softDelete,users.userName from news INNER JOIN users on news.userId = users.id";
     req.app.locals.con.query(sql, (err
         , result) => {
         console.log(result);
@@ -55,7 +57,7 @@ router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
     });
 });
 
-router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
+router.patch('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
     sql = "update news set softDelete = ? where id = ?";
     req.app.locals.con.query(sql, [req.body.softDelete, req.body.id], (err, result) => {
         if (!err) {
@@ -66,7 +68,22 @@ router.delete('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, re
         } else {
             return res.status(500).json(err);
         }
-    });
+    }); 
 });
+        
+// router.delete('/delete/id', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
+//     sql = "update news set softDelete = ? where id = ?";
+//     req.app.locals.con.query(sql, [req.body.softDelete, req.body.id], (err, result) => {
+//         if (!err) {
+//             if (result.affectedRows == 0) {
+//                 return res.status(404).json({ message: 'News id not found' });
+//             }
+//             return res.status(200).json({ message: 'News deleted successfully' });
+//         } else {
+//             return res.status(500).json(err);
+//         }
+//     });
+// });
+
 
 module.exports = router;
