@@ -97,7 +97,7 @@ GET http://localhost:3000/news/get
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
 
 ###
-GET http://localhost:3000/news?limit=4
+GET http://localhost:3000/news?limit=6
 
 ###
 # Create a new news

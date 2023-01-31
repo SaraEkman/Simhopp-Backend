@@ -33,7 +33,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  let sql = "select id, userEmail, password, admin from users where userEmail=?";
+  let sql = "select id, userEmail, password, admin, softDelete from users where userEmail=?";
   req.app.locals.con.query(sql, [req.body.userEmail], (err, result) => {
     console.log(result);
     if (!err) {
@@ -46,7 +46,10 @@ router.post('/login', (req, res) => {
           userId: result[0].id, userEmail: result[0].userEmail
         });
       }
-      else if (result[0].password == req.body.password && result[0].admin == 1) {
+      else if (result[0].password == req.body.password && result[0].admin == 1 && result[0].softDelete == 1) {
+        return res.status(401).json({ message: 'User is deleted!' });
+      }
+      else if (result[0].password == req.body.password && result[0].admin == 1 && result[0].softDelete == 0) {
         const response = { userEmail: result[0].userEmail, password: result[0].password };
         const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, { expiresIn: '8h' });
         res.status(200).json({
