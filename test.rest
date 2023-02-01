@@ -45,12 +45,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 ###
 PATCH http://localhost:3000/users/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc0Njc3MTk4LCJleHAiOjE2NzQ3MDU5OTh9.6uF4MwiEDDj7yGmxGRbQyHRQgIPBjsKybx_EOUZDDag
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1MTU5MzU5LCJleHAiOjE2NzUxODgxNTl9.lPdyddzWde9NxI5Q-6JvYBYDC03fQodhVz7Wh4RtvSk
 
 {
   "id": 20,
-  "softDelete": 0
+  "softDelete": true
 }
+
+### 
+DELETE http://localhost:3000/users/delete/63
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1MTU5MzU5LCJleHAiOjE2NzUxODgxNTl9.lPdyddzWde9NxI5Q-6JvYBYDC03fQodhVz7Wh4RtvSk
+
 
 ###
 POST http://localhost:3000/users/changePasswordUser

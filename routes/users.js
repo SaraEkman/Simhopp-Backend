@@ -160,6 +160,28 @@ router.patch('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
   });
 });
 
+router.delete('/delete/:id', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
+  
+  let sql = "delete from users where id=? and admin='0'";
+  req.app.locals.con.query(sql, [req.params.id], (err, result) => {
+    console.log(result);
+    if (!err) {
+      if (result.affectedRows == 0) {
+        return res.status(404).json({
+          message: 'User id dose not exist! or User is an admin!'
+        });
+      }
+      return res.status(200).json({
+        message: 'User deleted successfully!'
+      });
+    } else {
+      res.status(500).json(err);
+    }
+  }
+  );
+});
+
+
 router.get('/checkToken', auth.authenticateToken, (req, res) => {
   return res.status(200).json({
     message: 'true'
