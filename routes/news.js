@@ -16,7 +16,7 @@ router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, ne
 
 router.get('/', (req, res, next) => {
     console.log(req.query.limit);
-    sql = "select id,content,createDate from news where softDelete = 0 limit " + req.query.limit;
+    sql = "select id,content,createDate from news where softDelete = 0 order by createDate desc limit " + req.query.limit;
     console.log(sql);
     req.app.locals.con.query(sql, (err, result) => {
         console.log(result);
