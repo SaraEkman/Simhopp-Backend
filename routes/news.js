@@ -31,7 +31,7 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/get', auth.authenticateToken, (req, res, next) => {
-    sql = "select news.id,news.content,news.createDate,news.userId,news.softDelete,users.userName from news INNER JOIN users on news.userId = users.id";
+    sql = "select news.id,news.content,news.createDate,news.userId,news.softDelete,users.userName from news INNER JOIN users on news.userId = users.id order by createDate desc";
     req.app.locals.con.query(sql, (err
         , result) => {
         console.log(result);
