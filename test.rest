@@ -109,14 +109,14 @@ GET http://localhost:3000/news?limit=6
 ###
 POST http://localhost:3000/news/add
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8iLCJpYXQiOjE2NzMyNzcxOTAsImV4cCI6MTY3MzMwNTk5MH0.MueFmYzHwpkbPvYyl1n6VuprYgvLBs4qvIdV901QC6g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1NjEzMTA5LCJleHAiOjE2NzU2NDE5MDl9.LYHz3Wo-ePohGYeySfw-hKUFh1Mk5xwG157wQm9zlEM
 
 {
   "content": "<p>hej</p><h1>Vad gör du idag?</h1>",
-  "userId": 18
+  "image" : "https://via.placeholder.com/150",
+  "userId": 20
 }
 
-###
 # update a news
 ###
 PATCH http://localhost:3000/news/update
@@ -125,6 +125,7 @@ Content-Type: application/json
 
 {
   "content": "<p>Via: </p><h1>HEAD </h1>",
+  "image" : "https://via.placeholder.com/150",
   "userId": 18,
   "id": 6
 }
