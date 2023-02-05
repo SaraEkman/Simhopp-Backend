@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/users/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc0NjcyNTg2LCJleHAiOjE2NzQ3MDEzODZ9.Plr4BtFRRRPdUdxNjzyByfHMxUC6un0OWqHUgYVjlkU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1NjI3NTQ3LCJleHAiOjE2NzU2NTYzNDd9.7wFYZkRKlDADQecMgQYZaSAf1XBGHSLQT0PWucLtUWE
 
 ###
 # Create a new user
@@ -99,7 +99,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 
 ###
 GET http://localhost:3000/news/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1MjUyODQ5LCJleHAiOjE2NzUyODE2NDl9.rYisyQxUeiyfD4nS9YS5q5Oat-WcBAMGPZQJBhBmWAg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1NjI3NTQ3LCJleHAiOjE2NzU2NTYzNDd9.7wFYZkRKlDADQecMgQYZaSAf1XBGHSLQT0PWucLtUWE
 
 ###
 GET http://localhost:3000/news?limit=6
