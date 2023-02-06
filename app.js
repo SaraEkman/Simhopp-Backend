@@ -48,6 +48,7 @@ app.locals.con = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
     // rootPassword: process.env.MYSQL_ROOT_PASSWORD
 });
+
 app.locals.con.connect((err) => {
     if (!err) {
         console.log('Connected to database');
