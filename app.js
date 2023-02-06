@@ -40,11 +40,12 @@ require('dotenv').config();
 
 app.locals.con = mysql.createConnection({
     connectionLimit: 10,
-    host: process.env.DB_HOST,
-    // port: process.env.PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    // host: process.env.DB_HOST,
+    port: process.env.PORT,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    // rootPassword: process.env.MYSQL_ROOT_PASSWORD
 });
 app.locals.con.connect((err) => {
     if (!err) {
