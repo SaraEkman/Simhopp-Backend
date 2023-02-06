@@ -99,7 +99,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0Z
 
 ###
 GET http://localhost:3000/news/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1NjI3NTQ3LCJleHAiOjE2NzU2NTYzNDd9.7wFYZkRKlDADQecMgQYZaSAf1XBGHSLQT0PWucLtUWE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1Njk0Mzk0LCJleHAiOjE2NzU3MjMxOTR9.0IiiweieD4xd32GFOgvIRIDlj0cZr9qXj2j6fi-VOUU
 
 ###
 GET http://localhost:3000/news?limit=6
