@@ -23,15 +23,15 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 100000, limit: '50mb' }));
 
 const storage = multer.diskStorage({
-    destination: (req, file, callBack) =>{
+    destination: (req, file, callBack) => {
         callBack(null, '../Simhopp/src/assets/uploads');
     },
-    filename: (req, file, callBack) =>{
+    filename: (req, file, callBack) => {
         callBack(null, Date.now() + '-' + file.originalname);
     }
 });
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 // app.use(multer({ limits: { fileSize: 50 * 1024 * 1024 } }).single('image'));
 
 app.use(cookieParser());
@@ -41,7 +41,7 @@ require('dotenv').config();
 app.locals.con = mysql.createConnection({
     connectionLimit: 10,
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+    port: process.env.PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
