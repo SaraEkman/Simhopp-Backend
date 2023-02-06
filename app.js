@@ -40,8 +40,9 @@ require('dotenv').config();
 
 app.locals.con = mysql.createConnection({
     connectionLimit: 10,
+    multipleStatements: true,
     // host: process.env.DB_HOST,
-    port: process.env.PORT,
+    // port: process.env.PORT,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
