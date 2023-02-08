@@ -57,14 +57,6 @@ app.locals.con.connect((err) => {
     }
 });
 
-// app.locals.con.connect((err) => {
-//     if (!err) {
-//         console.log('Connected to database');
-//     } else {
-//         console.log('Connection failed', err);
-//     }
-// });
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news', newsRouter);
