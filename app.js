@@ -39,9 +39,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
 
 app.locals.con = mysql.createConnection({
-    connectionLimit: 10,
+    // connectionLimit: 10,
     multipleStatements: true,
-    host: process.env.DB_HOST,
+    host: process.env.MYSQL_HOST,
     port: process.env.PORT,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
