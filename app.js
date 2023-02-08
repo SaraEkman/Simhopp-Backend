@@ -61,7 +61,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news', newsRouter);
 
-
 app.post('/uploads', upload.single('image'), (req, res, next) => {
     console.log(req.body);
     if (req.file == null) {
