@@ -9,10 +9,10 @@ require('dotenv').config();
 var auth = require('../services/authentication');
 var checkAdmin = require('../services/checkAdmin');
 router.use(cors({
-  origin: 'https://simhopp.vercel.app',
+  origin: ['https://simhopp.vercel.app'],
   // origin: '*',
-  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-
+  // methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+  optionsSuccessStatus: 200,
 }));
 
 router.post('/signup', (req, res) => {

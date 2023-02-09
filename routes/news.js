@@ -5,9 +5,11 @@ var router = express.Router();
 const cors = require('cors');
 
 router.use(cors({
-    origin: 'https://simhopp.vercel.app',
+    origin: ['https://simhopp.vercel.app'],
+    // origin: 'https://simhopp.vercel.app',
     // origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    optionsSuccessStatus: 200,
     
 }));
 
