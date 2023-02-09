@@ -13,6 +13,13 @@ var newsRouter = require('./routes/news');
 
 var app = express();
 app.use(cors());
+app.use(function (req, res, next) {
+    //Enabling CORS
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, contentType,Content-Type, Accept, Authorization");
+    next();
+});
 
 app.use(logger('dev'));
 // app.use(express.json());
