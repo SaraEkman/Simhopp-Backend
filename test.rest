@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/users/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1NjI3NTQ3LCJleHAiOjE2NzU2NTYzNDd9.7wFYZkRKlDADQecMgQYZaSAf1XBGHSLQT0PWucLtUWE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1OTQ4NTk2LCJleHAiOjE2NzU5NzczOTZ9.1jD_BUgfPZUvuBwOUl7ZAC-wadWa-fZ_L_zKDt0lTb4
 
 ###
 # Create a new user
