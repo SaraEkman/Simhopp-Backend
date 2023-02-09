@@ -12,9 +12,11 @@ var usersRouter = require('./routes/users');
 var newsRouter = require('./routes/news');
 
 var app = express();
-app.use(cors({
+app.use(cors(
+    {
     origin: 'https://simhopp.vercel.app'
-}));
+    }
+));
 // app.use(function (req, res, next) {
 //     //Enabling CORS
 //     res.header("Access-Control-Allow-Origin", "*");

@@ -8,7 +8,9 @@ const nodeMalier = require('nodemailer');
 require('dotenv').config();
 var auth = require('../services/authentication');
 var checkAdmin = require('../services/checkAdmin');
-router.use(cors());
+router.use(cors({
+  origin: 'https://simhopp.vercel.app'
+}));
 
 router.post('/signup', (req, res) => {
   let sql = "select userName, userEmail, password from users where userEmail=?";

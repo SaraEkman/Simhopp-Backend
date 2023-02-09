@@ -4,7 +4,9 @@ var checkAdmin = require('../services/checkAdmin');
 var router = express.Router();
 const cors = require('cors');
 
-router.use(cors());
+router.use(cors({
+    origin: 'https://simhopp.vercel.app'
+}));
 
 router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
     sql = "insert into news (content, userId, image) values(?,?,?)";
@@ -26,7 +28,7 @@ router.get('/', (req, res, next) => {
     req.app.locals.con.query(sql, (err, result) => {
         console.log(result);
         if (!err) {
-            return res.status(200).json(result);
+            return res.status(200).json({ message: 'News fetched successfully', news: result });
         } else {
             return res.status(500).json(err);
         }
