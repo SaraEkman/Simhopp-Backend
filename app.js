@@ -14,7 +14,10 @@ var newsRouter = require('./routes/news');
 var app = express();
 app.use(cors(
     {
-    origin: 'https://simhopp.vercel.app'
+        // origin: 'https://simhopp.vercel.app',
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
     }
 ));
 // app.use(function (req, res, next) {
@@ -23,6 +26,7 @@ app.use(cors(
 //     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, contentType,Content-Type, Accept, Authorization");
 //     next();
+//     console.log(req.body);
 // });
 
 app.use(logger('dev'));

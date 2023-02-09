@@ -5,7 +5,9 @@ var router = express.Router();
 const cors = require('cors');
 
 router.use(cors({
-    origin: 'https://simhopp.vercel.app'
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
 }));
 
 router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
@@ -28,7 +30,7 @@ router.get('/', (req, res, next) => {
     req.app.locals.con.query(sql, (err, result) => {
         console.log(result);
         if (!err) {
-            return res.status(200).json({ message: 'News fetched successfully', news: result });
+            return res.status(200).json(result);
         } else {
             return res.status(500).json(err);
         }
@@ -75,7 +77,7 @@ router.patch('/delete', auth.authenticateToken, checkAdmin.checkAdmin, (req, res
         } else {
             return res.status(500).json(err);
         }
-    }); 
+    });
 });
-        
+
 module.exports = router;
