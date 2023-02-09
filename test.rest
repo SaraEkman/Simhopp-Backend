@@ -35,10 +35,13 @@ Content-Type: application/json
 ###
 PATCH http://localhost:3000/users/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMzg0IiwiaWF0IjoxNjczMTAzMjMwLCJleHAiOjE2NzMxMzIwMzB9.SXUVXP-svFnJ5PbFOJpJuX2HXdR8WgLYX7_zFkBVwTk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJzYXJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicMOlcG8xMjM0IiwiaWF0IjoxNjc1OTMxNDIyLCJleHAiOjE2NzU5NjAyMjJ9.OgGXwFY89o_cfWX5Ezf0Ur5q7ntMs40sXIswmjWgp7c
 
 {
   "id": 20,
+  "userName": "test2",
+  "userEmail": "test2@gmail.com",
+  "password": "123456789",
   "admin": 0
 }
 
