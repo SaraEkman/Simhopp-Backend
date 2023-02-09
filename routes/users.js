@@ -123,8 +123,8 @@ router.get('/get', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => 
 });
 
 router.patch('/update', auth.authenticateToken, checkAdmin.checkAdmin, (req, res) => {
-  let sql = "update users set admin=? where id=?";
-  req.app.locals.con.query(sql, [req.body.admin, req.body.id], (err, result) => {
+  let sql = "update users set userName=?,userEmail=?,password=?,admin=? where id=?";
+  req.app.locals.con.query(sql, [req.body.userName, req.body.userEmail, req.body.password, req.body.admin, req.body.id], (err, result) => {
     console.log(result);
     if (!err) {
       if (result.affectedRows == 0) {
