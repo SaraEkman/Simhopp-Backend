@@ -7,8 +7,8 @@ const cors = require('cors');
 router.use(cors({
     origin: 'https://simhopp.vercel.app',
     // origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    
 }));
 
 router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {

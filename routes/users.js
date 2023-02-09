@@ -11,8 +11,8 @@ var checkAdmin = require('../services/checkAdmin');
 router.use(cors({
   origin: 'https://simhopp.vercel.app',
   // origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+
 }));
 
 router.post('/signup', (req, res) => {
