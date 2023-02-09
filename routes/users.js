@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const mysql = require('mysql2');
+const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
 const nodeMalier = require('nodemailer');
 require('dotenv').config();
 var auth = require('../services/authentication');
 var checkAdmin = require('../services/checkAdmin');
+router.use(cors());
 
 router.post('/signup', (req, res) => {
   let sql = "select userName, userEmail, password from users where userEmail=?";

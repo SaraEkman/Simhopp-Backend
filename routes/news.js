@@ -2,6 +2,9 @@ var express = require('express');
 var auth = require('../services/authentication');
 var checkAdmin = require('../services/checkAdmin');
 var router = express.Router();
+const cors = require('cors');
+
+router.use(cors());
 
 router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
     sql = "insert into news (content, userId, image) values(?,?,?)";
