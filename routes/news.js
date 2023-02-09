@@ -5,7 +5,8 @@ var router = express.Router();
 const cors = require('cors');
 
 router.use(cors({
-    origin: '*',
+    origin: 'https://simhopp.vercel.app',
+    // origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
 }));

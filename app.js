@@ -14,8 +14,8 @@ var newsRouter = require('./routes/news');
 var app = express();
 app.use(cors(
     {
-        // origin: 'https://simhopp.vercel.app',
-        origin: '*',
+        origin: 'https://simhopp.vercel.app',
+        // origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
     }
