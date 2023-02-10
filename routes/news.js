@@ -5,13 +5,16 @@ var router = express.Router();
 const cors = require('cors');
 
 router.use(cors({
-    origin: ['https://simhopp.vercel.app'],
-    // origin: 'https://simhopp.vercel.app',
-    // origin: '*',
-    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    optionsSuccessStatus: 200,
+    // origin: ['https://simhopp.vercel.app'],
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    // optionsSuccessStatus: 200,
     
 }));
+
+router.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); next();
+});
 
 router.post('/add', auth.authenticateToken, checkAdmin.checkAdmin, (req, res, next) => {
     sql = "insert into news (content, userId, image) values(?,?,?)";

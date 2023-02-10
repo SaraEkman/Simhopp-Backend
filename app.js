@@ -17,10 +17,10 @@ var app = express();
 
 app.use(cors(
     {
-        origin: ['https://simhopp.vercel.app'],
-        // origin: '*',
-        // methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-        optionsSuccessStatus: 200,
+        // origin: ['https://simhopp.vercel.app'],
+        origin: '*',
+        methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+        // optionsSuccessStatus: 200,
     }
 ));
 
@@ -47,6 +47,10 @@ app.use(cors(
 //     next();
 //     console.log(req.body);
 // });
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); next();
+});
 
 app.use(logger('dev'));
 // app.use(express.json());

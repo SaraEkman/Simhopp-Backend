@@ -9,11 +9,15 @@ require('dotenv').config();
 var auth = require('../services/authentication');
 var checkAdmin = require('../services/checkAdmin');
 router.use(cors({
-  origin: ['https://simhopp.vercel.app'],
-  // origin: '*',
-  // methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-  optionsSuccessStatus: 200,
+  // origin: ['https://simhopp.vercel.app'],
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+  // optionsSuccessStatus: 200,
 }));
+
+router.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); next();
+});
 
 router.post('/signup', (req, res) => {
   let sql = "select userName, userEmail, password from users where userEmail=?";
